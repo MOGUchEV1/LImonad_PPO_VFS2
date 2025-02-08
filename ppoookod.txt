@@ -1,0 +1,297 @@
+const int ledPin1 = 12;  // Пин светодиода    
+const int ledPin2 = 13;    
+const int buttonPin = 9;  // Пин кнопки    
+const int buttonvukl = 10;  
+const int motor = 4;     
+const int klapon1 = 7;     
+const int klapon2 = 6;     
+const int klapon3 = 8;     
+const int klapondisp = 5;     
+const int dirPin = 2;  
+const int stepPin = 3;  
+const int stepsPerRevolution = 200;  
+int d;    
+int h;  
+int v;   
+int f=0;  
+     
+void setup() {     
+  Serial.begin(9600);     
+  pinMode(ledPin1, OUTPUT);  // Инициализация пина светодиода как выхода    
+  pinMode(ledPin2, OUTPUT);       
+  pinMode(buttonPin, INPUT);  // Инициализация пина кнопки как входа    
+  pinMode(buttonvukl, INPUT);    
+  pinMode(motor, OUTPUT);     
+  pinMode(klapon1, OUTPUT);     
+  pinMode(klapon2, OUTPUT);     
+  pinMode(klapon3, OUTPUT);     
+  pinMode(klapondisp, OUTPUT);     
+  pinMode(stepPin, OUTPUT);   
+  pinMode(dirPin, OUTPUT);   
+}     
+     
+void loop() {     
+v = digitalRead(buttonvukl);    
+digitalWrite(klapon1, HIGH);    
+digitalWrite(klapon2, HIGH);    
+digitalWrite(klapon3, HIGH);    
+digitalWrite(klapondisp, HIGH);   
+Serial.available();   
+if (Serial.available()) {   
+  h = Serial.read();   
+if (h==49){       
+  digitalWrite(klapon1, LOW);    
+  delay(9320);    
+  digitalWrite(klapon1, HIGH);     
+  digitalWrite(dirPin, LOW); // Установка вращения против часовой стрелки   
+  for(int x = 0; x < 90; x++){   
+  digitalWrite(stepPin, HIGH);   
+  delayMicroseconds(1000);   
+  digitalWrite(stepPin, LOW);   
+  delayMicroseconds(1000);   
+  }  
+  digitalWrite(klapon2, LOW);    
+  delay(2000);    
+  digitalWrite(klapon2, HIGH);       
+  digitalWrite(dirPin, LOW); // Установка вращения против часовой стрелки   
+  for(int x = 0; x < 90; x++){   
+  digitalWrite(stepPin, HIGH);   
+  delayMicroseconds(1000);   
+  digitalWrite(stepPin, LOW);   
+  delayMicroseconds(1000);   
+  }  
+  digitalWrite(klapon3, LOW);    
+  delay(8530);    
+  digitalWrite(klapon3, HIGH);      
+  digitalWrite(dirPin, LOW); // Установка вращения против часовой стрелки   
+  for(int x = 0; x < 90; x++){   
+  digitalWrite(stepPin, HIGH);   
+  delayMicroseconds(1000);   
+  digitalWrite(stepPin, LOW);   
+  delayMicroseconds(1000);   
+  }  
+  digitalWrite(klapon1, LOW);    
+  delay(9320);    
+  digitalWrite(klapon1, HIGH);     
+  digitalWrite(ledpin2, HIGH);  
+  delay(2000); 
+  digitalWrite(ledpin2, LOW);   
+  digitalWrite(dirPin, LOW); // Установка вращения против часовой стрелки   
+  for(int x = 0; x < 90; x++){   
+  digitalWrite(stepPin, HIGH);   
+  delayMicroseconds(1000);   
+  digitalWrite(stepPin, LOW);   
+  delayMicroseconds(1000);   
+  }  
+  digitalWrite(ledpin2, HIGH);  
+  delay(2000);  
+  digitalWrite(ledpin2, LOW);  
+  digitalWrite(dirPin, LOW); // Установка вращения против часовой стрелки   
+  for(int x = 0; x < 90; x++){   
+  digitalWrite(stepPin, HIGH);   
+  delayMicroseconds(1000);   
+  digitalWrite(stepPin, LOW);   
+  delayMicroseconds(1000);   
+  }  
+  digitalWrite(ledpin2, HIGH);  
+  delay(2000); 
+  digitalWrite(ledpin2, LOW);   
+  digitalWrite(dirPin, LOW); // Установка вращения против часовой стрелки   
+  for(int x = 0; x < 90; x++){
+digitalWrite(stepPin, HIGH);   
+  delayMicroseconds(1000);   
+  digitalWrite(stepPin, LOW);   
+  delayMicroseconds(1000);   
+  }  
+  digitalWrite(ledpin2, HIGH);  
+  delay(2000);  
+  digitalWrite(ledpin2, LOW);  
+}  
+if (h==50){  
+      digitalWrite(klapondisp, HIGH); 
+      digitalWrite(klapon1, LOW);    
+      digitalWrite(klapon2, LOW);    
+      digitalWrite(motor, HIGH);    
+      delay(3040);    
+      digitalWrite(klapon2, HIGH);   
+      delay(5000);    
+      digitalWrite(klapon1, HIGH);   
+      digitalWrite(motor, LOW);    
+      digitalWrite(klapondisp, LOW);    
+      d = digitalRead(buttonPin);     
+      while (d==0){  
+        delay(10);  
+        d = digitalRead(buttonPin);  
+        f+=1;  
+      }  
+      f=19000-f  
+      delay(f);    
+      digitalWrite(dirPin, LOW); // Установка вращения против часовой стрелки   
+      for(int x = 0; x < 100; x++){   
+      digitalWrite(stepPin, HIGH);   
+      delayMicroseconds(1000);   
+      digitalWrite(stepPin, LOW);   
+      delayMicroseconds(1000);   
+      }   
+      digitalWrite(ledpin2, HIGH);     
+      delay(2000);  
+      digitalWrite(ledpin2, LOW);     
+    }  
+    if (h==51){   
+      digitalWrite(klapondisp, HIGH); 
+      digitalWrite(klapon1, LOW);   
+      digitalWrite(klapon3, LOW);   
+      digitalWrite(motor, HIGH);   
+      delay(2000);   
+      digitalWrite(klapon1, HIGH);   
+      delay(5000);  
+      digitalWrite(klapon3, HIGH);   
+      digitalWrite(motor, LOW);   
+      digitalWrite(klapondisp, LOW);   
+      delay(3000);   
+      digitalWrite(dirPin, LOW); // Установка вращения против часовой стрелки  
+      for(int x = 0; x < 50; x++){  
+      digitalWrite(stepPin, HIGH);  
+      delayMicroseconds(1000);  
+      digitalWrite(stepPin, LOW);  
+      delayMicroseconds(1000);  
+      }  
+      digitalWrite(klapon1, LOW);     
+      delay(9320);   
+      digitalWrite(klapon1, HIGH);   
+      digitalWrite(dirPin, LOW); // Установка вращения против часовой стрелки  
+      for(int x = 0; x < 50; x++){  
+      digitalWrite(stepPin, HIGH);  
+      delayMicroseconds(1000);  
+      digitalWrite(stepPin, LOW);  
+      delayMicroseconds(1000);  
+      }  
+      digitalWrite(ledpin2, HIGH); 
+      delay(2000); 
+      digitalWrite(ledpin2, LOW); 
+      for(int x = 0; x < 50; x++){  
+      digitalWrite(stepPin, HIGH);  
+      delayMicroseconds(1000);  
+      digitalWrite(stepPin, LOW);  
+      delayMicroseconds(1000);  
+      }    
+      digitalWrite(ledpin2, HIGH); 
+      delay(2000); 
+      digitalWrite(ledpin2, LOW); 
+    }  
+    if (h==52){   
+      digitalWrite(klapondisp, HIGH);    
+      digitalWrite(klapon1, LOW);   
+      digitalWrite(klapon2, LOW);   
+      digitalWrite(klapon3, LOW);   
+      digitalWrite(motor, HIGH);   
+      delay(4789);   
+      digitalWrite(klapon2, HIGH);   
+      delay(4880);  
+      digitalWrite(klapon1, HIGH);  
+      delay(9320);   
+      digitalWrite(klapon3, HIGH);   
+      digitalWrite(motor, LOW);   
+      digitalWrite(klapondisp, LOW);    
+      delay(60000);   
+      digitalWrite(dirPin, LOW); // Установка вращения против часовой стрелки  
+      for(int x = 0; x < 50; x++){  
+      digitalWrite(stepPin, HIGH);  
+      delayMicroseconds(1000);
+digitalWrite(stepPin, LOW);  
+      delayMicroseconds(1000); 
+      }  
+      digitalWrite(klapon2, LOW);    
+      delay(6040);    
+      digitalWrite(klapon2, HIGH);       
+      digitalWrite(dirPin, LOW); // Установка вращения против часовой стрелки   
+      for(int x = 0; x < 90; x++){   
+      digitalWrite(stepPin, HIGH);   
+      delayMicroseconds(1000);   
+      digitalWrite(stepPin, LOW);   
+      delayMicroseconds(1000);   
+      }  
+      digitalWrite(klapon2, LOW);    
+      delay(6040);    
+      digitalWrite(klapon2, HIGH);       
+      digitalWrite(dirPin, LOW); // Установка вращения против часовой стрелки   
+      for(int x = 0; x < 90; x++){   
+      digitalWrite(stepPin, HIGH);   
+      delayMicroseconds(1000);   
+      digitalWrite(stepPin, LOW);   
+      delayMicroseconds(1000);   
+      }  
+      digitalWrite(klapon2, LOW);    
+      delay(6040);    
+      digitalWrite(klapon2, HIGH);       
+      digitalWrite(ledpin2, HIGH);  
+      delay(2000); 
+      digitalWrite(ledpin2, LOW);   
+      digitalWrite(dirPin, LOW); // Установка вращения против часовой стрелки   
+      for(int x = 0; x < 90; x++){   
+      digitalWrite(stepPin, HIGH);   
+      delayMicroseconds(1000);   
+      digitalWrite(stepPin, LOW);   
+      delayMicroseconds(1000);   
+      }  
+      digitalWrite(ledpin2, HIGH);  
+      delay(2000);  
+      digitalWrite(ledpin2, LOW);  
+      digitalWrite(dirPin, LOW); // Установка вращения против часовой стрелки   
+      for(int x = 0; x < 90; x++){   
+      digitalWrite(stepPin, HIGH);   
+      delayMicroseconds(1000);   
+      digitalWrite(stepPin, LOW);   
+      delayMicroseconds(1000);   
+      }  
+      digitalWrite(ledpin2, HIGH);  
+      delay(2000); 
+      digitalWrite(ledpin2, LOW);   
+      digitalWrite(dirPin, LOW); // Установка вращения против часовой стрелки   
+      for(int x = 0; x < 90; x++){   
+      digitalWrite(stepPin, HIGH);   
+      delayMicroseconds(1000);   
+      digitalWrite(stepPin, LOW);   
+      delayMicroseconds(1000);   
+      }  
+      digitalWrite(ledpin2, HIGH);  
+      delay(2000);  
+      digitalWrite(ledpin2, LOW);        
+     
+    }       
+}    
+v = digitalRead(buttonvukl);    
+if (v==1){ 
+  g=1; 
+} 
+if(g!=0){ 
+    digitalWrite(motor, LOW);    
+    digitalWrite(klapon1, HIGH);   
+    digitalWrite(klapon2, HIGH);   
+    digitalWrite(klapon3, HIGH);   
+    digitalWrite(klapondisp, HIGH);   
+    digitalWrite(ledpin1, HIGH);   
+    digitalWrite(ledpin2, LOW);   
+    v = digitalRead(buttonvukl);  
+    if (v==1){ 
+    g=1; 
+    } 
+} 
+v = digitalRead(buttonvukl);    
+if (v==1){ 
+  g=1; 
+} 
+while(g!=0){ 
+    digitalWrite(motor, LOW);    
+    digitalWrite(klapon1, HIGH);   
+    digitalWrite(klapon2, HIGH);   
+    digitalWrite(klapon3, HIGH);   
+    digitalWrite(klapondisp, HIGH);   
+    digitalWrite(ledpin1, HIGH);   
+    digitalWrite(ledpin2, LOW);   
+    v = digitalRead(buttonvukl);  
+    if (v==1){ 
+    g=1; 
+    } 
+} 
+}
